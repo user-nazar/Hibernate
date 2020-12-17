@@ -3,6 +3,7 @@ package ua.lviv.iot.model.implementation;
 
 import ua.lviv.iot.model.IGeneralModel;
 
+
 import javax.persistence.*;
 import java.util.Objects;
 
@@ -18,14 +19,14 @@ public class User implements IGeneralModel {
     private String firstName;
     private String lastName;
     private String country;
-    private User thisSystemId;
+    private SystemControl systemId;
 
-    public User(Integer id, String firstName, String lastName, String country, User thisSystemId) {
+    public User(Integer id, String firstName, String lastName, String country, SystemControl systemId) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.country = country;
-        this.thisSystemId = thisSystemId;
+        this.systemId = systemId;
     }
 
     public User() {
@@ -98,23 +99,24 @@ public class User implements IGeneralModel {
     }
 
     @ManyToOne
-    @JoinColumn(name = "this_system_id", referencedColumnName = "id", nullable = false)
-    public User getThisSystemId() {
+    @JoinColumn(name = "system_id", referencedColumnName = "id", nullable = false)
+    public SystemControl getSystemId() {
 
-        return thisSystemId;
+        return systemId;
     }
 
-    public void setThisSystemId(User thisSystemId) {
-        this.thisSystemId = thisSystemId;
+    public void setSystemId(SystemControl systemId) {
+        this.systemId =  systemId;
     }
 
     @Override
     public String toString() {
-        return "Story{"
+        return "User{"
                 + "id=" + id
                 + ", firstName='" + firstName + '\''
                 + ", lastName='" + lastName + '\''
                 + ", country=" + country + '\''
+                + "  system_id=" + systemId
                 + '}';
     }
 }

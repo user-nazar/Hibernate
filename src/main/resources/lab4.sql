@@ -299,7 +299,7 @@ COMMIT;
 
 
 START TRANSACTION;
-USE laboratorna4;
+USE laboratorna5;
 INSERT INTO laboratorna5.`sensor_notification` (`id`, `range_level`, `resolution_level`, `system_id`) VALUES (1, 78.5, 52.5, 1);
 INSERT INTO laboratorna5.`sensor_notification` (`id`, `range_level`, `resolution_level`, `system_id`) VALUES (2, 76.4, 69.4, 2);
 INSERT INTO laboratorna5.`sensor_notification` (`id`, `range_level`, `resolution_level`, `system_id`) VALUES (3, 115.7, 107.5, 3);

@@ -123,9 +123,9 @@ public class Sensor implements IGeneralModel {
 
     @Override
     public String toString() {
-        return "Story{"
+        return "Sensor{"
                 + "id=" + id
-                + "processing_time=" + processingTime
+                + "  processing_time=" + processingTime
                 + ", name_model='" +  nameModel + '\''
                 + ", type_sensor'" + typeSensor + '\''
                 + ", calibration=" + calibration

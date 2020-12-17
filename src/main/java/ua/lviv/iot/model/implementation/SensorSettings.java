@@ -16,13 +16,13 @@ public class SensorSettings implements IGeneralModel {
     private Integer id;
     private double sensorRange;
     private double sensorResolution;
-    private SensorSettings thisSystemId;
+    private SystemControl systemId;
 
-    public SensorSettings(Integer id, double sensorRange, double sensorResolution, SensorSettings thisSystemId) {
+    public SensorSettings(Integer id, double sensorRange, double sensorResolution, SystemControl systemId) {
         this.id = id;
         this.sensorRange = sensorRange;
         this.sensorResolution = sensorResolution;
-        this.thisSystemId = thisSystemId;
+        this.systemId = systemId;
     }
 
     public SensorSettings() {
@@ -83,25 +83,25 @@ public class SensorSettings implements IGeneralModel {
 
     @ManyToOne
     @JoinColumn(name = "system_id", referencedColumnName = "id", nullable = false)
-    public SensorSettings getThisSystemId() {
-        return thisSystemId;
+    public SystemControl getSystemId() {
+        return systemId;
     }
 
-    public void setThisSystemId(SensorSettings thisSystemId) {
-        this.thisSystemId = thisSystemId;
+    public void setSystemId(SystemControl systemId) {
+        this.systemId = systemId;
     }
 
 
     @Override
     public String toString() {
-        return "ObjectAndSecurity{"
+        return "SensorSettings{"
                 + "id=" + id
                 + ", sensor_range='"
                 + sensorRange
                 + ", sensor_resolution="
                 + sensorResolution
-                + ", this_system_id="
-                + thisSystemId
+                + ", system_id="
+                + systemId
                 + '}';
     }
 }

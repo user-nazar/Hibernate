@@ -245,10 +245,10 @@ public class MainView {
         System.out.println("Enter new control_access_level: ");
         double controlAccessLevel = INPUT.nextDouble();
         System.out.println("Enter new system_id: ");
-        int thisSystemId = INPUT.nextInt();
+        int systemId = INPUT.nextInt();
         INPUT.nextLine();
-        NotificationSettings notificationSettings = notificationSettingsController.getService().getById(thisSystemId, session);
-        NotificationSettings entity = new NotificationSettings(0, controlAccessLevel, notificationSettings);
+        SystemControl systemControl = systemControlController.getService().getById(systemId, session);
+        NotificationSettings entity = new NotificationSettings(0, controlAccessLevel, systemControl);
         notificationSettingsController.create(entity, session);
     }
 
@@ -268,7 +268,7 @@ public class MainView {
         System.out.println("Enter new control_access_level for notification_settings: ");
         double controlAccessLevel = INPUT.nextDouble();
         System.out.println("Enter new system_id for notification_settings: ");
-        int thisSystemId = INPUT.nextInt();
+        int systemId = INPUT.nextInt();
         INPUT.nextLine();
 
         double newControlAccessLevel = controlAccessLevel;
@@ -276,8 +276,8 @@ public class MainView {
         if (controlAccessLevel < 0.0) {
             newControlAccessLevel = oldNotificationSettings.getControlAccessLevel();
         }
-        NotificationSettings notificationSettings = notificationSettingsController.getService().getById(thisSystemId, session);
-        NotificationSettings entity = new NotificationSettings(id, newControlAccessLevel, notificationSettings);
+        SystemControl systemControl = systemControlController.getService().getById(systemId, session);
+        NotificationSettings entity = new NotificationSettings(id, newControlAccessLevel, systemControl);
         notificationSettingsController.update(entity, session);
     }
 
@@ -386,7 +386,7 @@ public class MainView {
 
     private void getAllSensorsNotification(Session session) throws SQLException {
         System.out.println("\nTable: sensor_notification");
-        roomController.getAll(session);
+        sensorNotificationController.getAll(session);
     }
 
     private void getSensorNotificationById(Session session) throws SQLException {
@@ -402,10 +402,10 @@ public class MainView {
         System.out.println("Enter new resolution_level: ");
         double resolutionLevel = INPUT.nextDouble();
         System.out.println("Enter new system_id: ");
-        int thisSystemId = INPUT.nextInt();
+        int systemId = INPUT.nextInt();
         INPUT.nextLine();
-        SensorNotification sensorNotification = sensorNotificationController.getService().getById(thisSystemId, session);
-        SensorNotification entity = new SensorNotification(0, rangeLevel, resolutionLevel, sensorNotification);
+        SystemControl systemControl = systemControlController.getService().getById(systemId, session);
+        SensorNotification entity = new SensorNotification(0, rangeLevel, resolutionLevel, systemControl);
         sensorNotificationController.create(entity, session);
     }
 
@@ -426,7 +426,7 @@ public class MainView {
         System.out.println("Enter new resolution_level: ");
         double resolutionLevel = INPUT.nextDouble();
         System.out.println("Enter new system_Id: ");
-        int thisSystemId = INPUT.nextInt();
+        int systemId = INPUT.nextInt();
         INPUT.nextLine();
 
         double newRangeLevel = rangeLevel;
@@ -438,8 +438,8 @@ public class MainView {
         if (resolutionLevel < 0.0) {
             newResolutionLevel = oldSensorNotification.getResolutionLevel();
         }
-        SensorNotification sensorNotification = sensorNotificationController.getService().getById(thisSystemId, session);
-        SensorNotification entity = new SensorNotification(id, newRangeLevel, newResolutionLevel, sensorNotification);
+        SystemControl systemControl = systemControlController.getService().getById(systemId, session);
+        SensorNotification entity = new SensorNotification(id, newRangeLevel, newResolutionLevel, systemControl);
         sensorNotificationController.update(entity, session);
     }
 
@@ -542,10 +542,10 @@ public class MainView {
         System.out.println("Enter new sensor_resolution: ");
         double sensorResolution = INPUT.nextDouble();
         System.out.println("Enter new system_id: ");
-        Integer thisSystemId = INPUT.nextInt();
+        Integer systemId = INPUT.nextInt();
         INPUT.nextLine();
-        SensorSettings sensorSettings = sensorSettingsController.getService().getById(thisSystemId, session);
-        SensorSettings entity = new SensorSettings(0, sensorRange, sensorResolution, sensorSettings);
+        SystemControl systemControl = systemControlController.getService().getById(systemId, session);
+        SensorSettings entity = new SensorSettings(0, sensorRange, sensorResolution, systemControl);
         sensorSettingsController.create(entity, session);
     }
 
@@ -566,7 +566,7 @@ public class MainView {
         System.out.println("Enter ID status for sensor_resolution: ");
         double sensorResolution = INPUT.nextDouble();
         System.out.println("Enter new ID for system_id: ");
-        int thisSystemId = INPUT.nextInt();
+        int systemId = INPUT.nextInt();
         INPUT.nextLine();
 
         double newSensorRange = sensorRange;
@@ -578,8 +578,8 @@ public class MainView {
         if (sensorResolution < 0.0) {
             newSensorResolution = oldSensorSetting.getSensorResolution();
         }
-        SensorSettings sensorSettings = sensorSettingsController.getService().getById(thisSystemId, session);
-        SensorSettings entity = new SensorSettings(id, newSensorRange, newSensorResolution, sensorSettings);
+        SystemControl systemControl = systemControlController.getService().getById(systemId, session);
+        SensorSettings entity = new SensorSettings(id, newSensorRange, newSensorResolution, systemControl);
         sensorSettingsController.update(entity, session);
     }
 
@@ -604,10 +604,10 @@ public class MainView {
         System.out.println("Enter new about_processings: ");
         String aboutProcessings = INPUT.nextLine();
         System.out.println("Enter new system_id: ");
-        int thisSystemId = INPUT.nextInt();
+        int systemId = INPUT.nextInt();
         INPUT.nextLine();
-        SystemAlert systemAlert = systemAlertController.getService().getById(thisSystemId, session);
-        SystemAlert entity = new SystemAlert(0, manyNotifications, textsNotifications, aboutProcessings, systemAlert);
+        SystemControl systemControl = systemControlController.getService().getById(systemId, session);
+        SystemAlert entity = new SystemAlert(0, manyNotifications, textsNotifications, aboutProcessings, systemControl);
         systemAlertController.create(entity, session);
     }
 
@@ -630,7 +630,7 @@ public class MainView {
         System.out.println("Enter new about_processings: ");
         String aboutProcessings = INPUT.nextLine();
         System.out.println("Enter new system_id: ");
-        int thisSystemId = INPUT.nextInt();
+        int systemId = INPUT.nextInt();
         INPUT.nextLine();
 
         int newManyNotifications = manyNotifications;
@@ -648,8 +648,8 @@ public class MainView {
             newAboutProcessings = oldSystemAlert.getAboutProcessings();
         }
 
-        SystemAlert newSystemAlert = systemAlertController.getService().getById(thisSystemId, session);
-        SystemAlert entity = new SystemAlert(id, newManyNotifications, newTextsNotifications, newAboutProcessings, newSystemAlert);
+        SystemControl systemControl = systemControlController.getService().getById(systemId, session);
+        SystemAlert entity = new SystemAlert(id, newManyNotifications, newTextsNotifications, newAboutProcessings, systemControl);
         systemAlertController.update(entity, session);
     }
 
@@ -722,10 +722,10 @@ public class MainView {
         System.out.println("Enter new country: ");
         String country = INPUT.nextLine();
         System.out.println("Enter new system_id: ");
-        int thisSystemId = INPUT.nextInt();
+        int systemId = INPUT.nextInt();
         INPUT.nextLine();
-        User user = userController.getService().getById(thisSystemId, session);
-        User entity = new User(0, firstName, lastName, country, user);
+        SystemControl systemControl = systemControlController.getService().getById(systemId, session);
+        User entity = new User(0, firstName, lastName, country, systemControl);
         userController.create(entity, session);
     }
 
@@ -748,7 +748,7 @@ public class MainView {
         System.out.println("Enter new country: ");
         String country = INPUT.nextLine();
         System.out.println("Enter new system_id: ");
-        int thisSystemId = INPUT.nextInt();
+        int systemId = INPUT.nextInt();
         INPUT.nextLine();
 
         String newFirstName = firstName;
@@ -765,8 +765,8 @@ public class MainView {
             newCountry = oldUser.getCountry();
         }
 
-        User user = userController.getService().getById(thisSystemId, session);
-        User entity = new User(id, newFirstName, newLastName, newCountry, user);
+        SystemControl systemControl = systemControlController.getService().getById(systemId, session);
+        User entity = new User(id, newFirstName, newLastName, newCountry, systemControl);
         userController.update(entity, session);
     }
 

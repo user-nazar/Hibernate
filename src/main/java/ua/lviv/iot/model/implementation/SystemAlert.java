@@ -18,14 +18,14 @@ public class SystemAlert implements IGeneralModel {
     private int manyNotifications;
     private String textsNotifications;
     private String aboutProcessings;
-    private SystemAlert thisSystemId;
+    private SystemControl systemId;
 
-    public SystemAlert(Integer id, int manyNotifications, String textsNotifications, String aboutProcessings, SystemAlert thisSystemId) {
+    public SystemAlert(Integer id, int manyNotifications, String textsNotifications, String aboutProcessings, SystemControl systemId) {
         this.id = id;
         this.manyNotifications = manyNotifications;
         this.textsNotifications = textsNotifications;
         this.aboutProcessings = aboutProcessings;
-        this.thisSystemId = thisSystemId;
+        this.systemId = systemId;
     }
 
     public SystemAlert() {
@@ -99,12 +99,12 @@ public class SystemAlert implements IGeneralModel {
 
     @ManyToOne
     @JoinColumn(name = "system_id", referencedColumnName = "id", nullable = false)
-    public SystemAlert getThisSystemId() {
-        return thisSystemId;
+    public SystemControl getSystemId() {
+        return systemId;
     }
 
-    public void setThisSystemId(SystemAlert thisSystemId) {
-        this.thisSystemId = thisSystemId;
+    public void setSystemId(SystemControl systemId) {
+        this.systemId = systemId;
     }
 
 
@@ -118,8 +118,8 @@ public class SystemAlert implements IGeneralModel {
                 + textsNotifications + '\''
                 + ", about_processings="
                 + aboutProcessings + '\''
-                + ", this_system_id="
-                + thisSystemId
+                + ", system_id="
+                + systemId
                 + '}';
     }
 }
