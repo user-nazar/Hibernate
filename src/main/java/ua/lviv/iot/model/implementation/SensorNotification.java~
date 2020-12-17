@@ -94,7 +94,7 @@ public class SensorNotification implements IGeneralModel {
    
     @Override
     public String toString() {
-        return "SensorNotification{"
+        return "{"
                 + "id=" + id
                 + ", range_level='"
                 + rangeLevel

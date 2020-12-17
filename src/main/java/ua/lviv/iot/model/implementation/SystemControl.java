@@ -68,7 +68,7 @@ public class SystemControl implements IGeneralModel {
 
     @Override
     public String toString() {
-        return "SystemAlert{"
+        return "SystemControl{"
                 + "id=" + id
                 + ", quantity_control_processings='"
                 + quantityControlProcessings

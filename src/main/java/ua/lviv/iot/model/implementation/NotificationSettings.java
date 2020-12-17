@@ -20,12 +20,12 @@ public class NotificationSettings implements IGeneralModel {
 
   private Integer id;
   private double controlAccessLevel;
-  private NotificationSettings thisSystemId;
+  private SystemControl systemId;
 
-  public NotificationSettings(Integer id, double controlAccessLevel, NotificationSettings thisSystemId) {
+  public NotificationSettings(Integer id, double controlAccessLevel, SystemControl systemId) {
     this.id = id;
     this.controlAccessLevel = controlAccessLevel;
-    this.thisSystemId = thisSystemId;
+    this.systemId = systemId;
   }
 
   public NotificationSettings() {
@@ -62,23 +62,22 @@ public class NotificationSettings implements IGeneralModel {
     if (o == null || getClass() != o.getClass()) return false;
     NotificationSettings notificationSettings = (NotificationSettings) o;
     return Objects.equals(id, notificationSettings.id) &&
-            Objects.equals(controlAccessLevel, notificationSettings.controlAccessLevel) &&
-            Objects.equals(thisSystemId, notificationSettings.thisSystemId);
+            Objects.equals(controlAccessLevel, notificationSettings.controlAccessLevel);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, controlAccessLevel, thisSystemId);
+    return Objects.hash(id, controlAccessLevel, systemId);
   }
 
   @ManyToOne
   @JoinColumn(name = "system_id", referencedColumnName = "id", nullable = false)
-  public NotificationSettings getThisSystemId() {
-    return thisSystemId;
+  public SystemControl getSystemId() {
+    return systemId;
   }
 
-  public void setThisSystemId(NotificationSettings thisSystemId) {
-    this.thisSystemId = thisSystemId;
+  public void setSystemId(SystemControl systemId) {
+    this.systemId = systemId;
   }
 
   @Override
@@ -86,7 +85,7 @@ public class NotificationSettings implements IGeneralModel {
     return "NotificationSettings{"
             + "id=" + id
             + ", control_access_level=" + controlAccessLevel
-            + ", this_system_id=" + thisSystemId
+            + ", system_id=" + systemId
             + '}';
   }
 }
